@@ -2,7 +2,6 @@ import { getProductById } from '@/actions/product.action'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { ArrowLeftToLine } from 'lucide-react'
-import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 
@@ -26,12 +25,10 @@ const page: React.FC<ProductPageProps> = async (props: { params: {slug: string} 
       <Link href="/user/products" className=' absolute left-5 md:left-10 top-8 bg-zinc-300/20 backdrop-blur-md border border-zinc-100/40 p-3 rounded-lg'><ArrowLeftToLine /></Link>
 
       <div className='w-full lg:w-1/3 h-[400px] xl:h-[600px] rounded-lg overflow-hidden'>
-        <Image
+        <img
           src={product?.imageUrl || ""}
           alt={product.name}
           className='w-full h-full object-cover'
-          width={100}
-          height={100}
         />
       </div>
 
