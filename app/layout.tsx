@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
+import { StackProvider, StackTheme } from "@stackframe/stack";
+import { stackServerApp } from "../stack";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { ThemeProvider } from "@/components/theme-provider";
+import { Toaster } from "react-hot-toast";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -26,9 +30,16 @@ export default function RootLayout({
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      ><StackProvider app={stackServerApp}><StackTheme>
+        <ThemeProvider
+        attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange>
+        <Toaster />
         {children}
-      </body>
+        </ThemeProvider>
+      </StackTheme></StackProvider></body>
     </html>
   );
 }
